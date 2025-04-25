@@ -29,6 +29,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { owner, guest, guests }: { owner: 'Marcos' | 'Millena'; guest?: Guest; guests?: Guest[] } = req.body;
 
       const docRef = doc(db, 'guests', owner.toLowerCase());
+      
+      // Ensure the document exists
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) {
+        // Initialize the document with an empty guest list
+        await setDoc(docRef, { guests: [] });
+      }
 
       if (guests) {
         // Replace the entire list for the owner
