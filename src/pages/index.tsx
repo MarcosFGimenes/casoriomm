@@ -63,7 +63,7 @@ const Home: React.FC = () => {
     await fetch('/api/guests', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ owner: 'Marcos', guests: updatedGuests }), // Send the updated list
+      body: JSON.stringify({ owner: 'Marcos', guests: updatedGuests }),
     });
   };
 
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
     await fetch('/api/guests', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ owner: 'Millena', guests: updatedGuests }), // Send the updated list
+      body: JSON.stringify({ owner: 'Millena', guests: updatedGuests }),
     });
   };
 
