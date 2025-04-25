@@ -9,11 +9,6 @@ interface Guest {
   value: number;
 }
 
-interface GuestData {
-  owner: 'Marcos' | 'Millena';
-  guest: Guest;
-}
-
 interface GuestsFile {
   marcos: Guest[];
   millena: Guest[];
@@ -29,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       try {
         const fileContent = await fs.readFile(filePath, 'utf-8');
         data = JSON.parse(fileContent);
-      } catch (error) {
+      } catch {
         // File doesn't exist, will create new
       }
 
@@ -53,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Write back to file
       await fs.writeFile(filePath, JSON.stringify(data, null, 2));
       res.status(200).json({ message: 'Guest list updated' });
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to update guest list' });
     }
   } else if (req.method === 'GET') {
@@ -61,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const fileContent = await fs.readFile(filePath, 'utf-8');
       const data: GuestsFile = JSON.parse(fileContent);
       res.status(200).json(data);
-    } catch (error) {
+    } catch {
       res.status(200).json({ marcos: [], millena: [] }); // Return empty lists if file doesn't exist
     }
   } else {

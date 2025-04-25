@@ -84,8 +84,7 @@ const Home: React.FC = () => {
   return (
     <div className="container">
       <Head>
-        <title>Marcos & Millena - Nosso Grande Dia</title>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+        <title>Marcos &amp; Millena - Nosso Grande Dia</title> {/* Escape '&' */}
       </Head>
 
       {/* Header */}
@@ -94,7 +93,7 @@ const Home: React.FC = () => {
           <h1 className="header-title">Marcos & Millena</h1>
           <h2 className="header-subtitle">A união de duas almas</h2>
           <p className="header-verse">
-            "E, assim, já não são mais dois, mas uma só carne." - Mateus 19:6
+            &quot;E, assim, já não são mais dois, mas uma só carne.&quot; - Mateus 19:6 {/* Escape '"' */}
           </p>
         </div>
       </header>
@@ -208,7 +207,7 @@ const Home: React.FC = () => {
           Agradecemos pela presença e pelas orações em nosso grande dia, que o Senhor continue abençoando nossas vidas.
         </p>
         <p className="footer-verse">
-          "E agora, esses três permanecem: a fé, a esperança e o amor. Mas o maior destes é o amor." - 1 Coríntios 13:13
+          &quot;E agora, esses três permanecem: a fé, a esperança e o amor. Mas o maior destes é o amor.&quot; - 1 Coríntios 13:13 {/* Escape '"' */}
         </p>
         <div className="footer-links">
           <a href="#" className="footer-link">Instagram</a>
