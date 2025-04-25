@@ -35,8 +35,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await setDoc(docRef, { guests });
       } else if (guest) {
         // Add a single guest
-        const docSnap = await getDoc(docRef);
-        const existingGuests = docSnap.exists() ? docSnap.data()?.guests || [] : [];
         await updateDoc(docRef, { guests: arrayUnion(guest) });
       }
 
